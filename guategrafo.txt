@@ -1,0 +1,9 @@
+Mixco Antigua 30
+Antigua Escuintla 25
+Escuintla SantaLucia 15
+SantaLucia Jutiapa 40
+Jutiapa Guatemala 50
+Guatemala Peten 120
+Peten Coban 90
+Coban Xela 70
+Xela Huehuetenango 45
