@@ -1,4 +1,4 @@
-# Diagrama UML - Proyecto Floyd Warshall
+# Diagrama UML - Floyd Warshall
 
 ```mermaid
 classDiagram
