@@ -24,7 +24,17 @@ public class Main {
                 grafo.agregarArco(origen, destino, distancia);
             }
 
+            leer.close();
+
             grafo.mostrarMatriz();
+
+            Floyd floyd =
+                    new Floyd(grafo.getMatriz(),
+                            grafo.getCiudades());
+
+            floyd.calcularRutas();
+
+            CentroGrafo centro = new CentroGrafo();
 
             Scanner teclado = new Scanner(System.in);
 
@@ -39,21 +49,31 @@ public class Main {
                 System.out.println("4. Eliminar conexion");
                 System.out.println("5. Salir");
 
+                System.out.print("Opcion: ");
                 opcion = teclado.nextInt();
 
                 switch (opcion) {
 
                     case 1:
 
-                        // Daniel
-                        System.out.println("Funcion pendiente");
+                        System.out.print("Ciudad origen: ");
+                        String origenRuta = teclado.next();
+
+                        System.out.print("Ciudad destino: ");
+                        String destinoRuta = teclado.next();
+
+                        floyd.mostrarRuta(origenRuta, destinoRuta);
 
                         break;
 
                     case 2:
 
-                        // Daniel 
-                        System.out.println("Funcion pendiente");
+                        System.out.println(
+                                centro.calcularCentro(
+                                        floyd.getDistancias(),
+                                        grafo.getCiudades()
+                                )
+                        );
 
                         break;
 
@@ -70,6 +90,15 @@ public class Main {
 
                         grafo.agregarArco(o, d, km);
 
+                        floyd = new Floyd(
+                                grafo.getMatriz(),
+                                grafo.getCiudades()
+                        );
+
+                        floyd.calcularRutas();
+
+                        System.out.println("Conexion agregada");
+
                         break;
 
                     case 4:
@@ -82,14 +111,29 @@ public class Main {
 
                         grafo.eliminarArco(origen, destino);
 
+                        floyd = new Floyd(
+                                grafo.getMatriz(),
+                                grafo.getCiudades()
+                        );
+
+                        floyd.calcularRutas();
+
+                        System.out.println("Conexion eliminada");
+
                         break;
 
                     case 5:
 
                         System.out.println("Programa finalizado");
                         break;
+
+                    default:
+
+                        System.out.println("Opcion invalida");
                 }
             }
+
+            teclado.close();
 
         } catch (Exception e) {
 
